@@ -1,0 +1,341 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{datetime}
+\usepackage{enumerate}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+
+\title{\bf \Large ASSIGNMENT 2}
+\author{Xinhao Luo} 
+\date{\today}
+
+\def\math#1{$#1$}
+
+\setlength{\textheight}{8.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\voffset0.0in
+
+\begin{document}
+\maketitle
+\medskip
+
+\section{Problem 3.53}
+\begin{enumerate}[(a)]
+    \item \math{x \in \mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}}
+    \item \math{x \in \mathbb{R}}
+    \item 
+        \begin{itemize}
+            \item \math{x \in \mathbb{N}, y \in \mathbb{N}}
+            \item \math{x \in \mathbb{Z}, y \in \mathbb{Z}}
+            \item \math{x \in \mathbb{Q}, y \in \mathbb{Q}}
+            \item \math{x \in \mathbb{R}, y \in \mathbb{R}}
+        \end{itemize}
+    \item \math{x \in \mathbb{R}}; \math{y \in \mathbb{N}}
+\end{enumerate}
+
+\section{Problem 4.9}
+\begin{enumerate}[(a)]
+    \item set "\math{{n}^{3} + 5} is odd" as \math{p}, "\math{n} is even" as \math{q}
+    \begin{itemize}
+        \item Direct Prove
+            \begin{enumerate}[i)]
+             \item set \math{p} as true
+             \item \math{{n}^{3} + 5 = 2k + 1}, while \math{k} is integer
+             \item \math{{n}^{3}} is even
+             \item \math{{n}^{3} = n \times n \times n}, since an even result can only come from even number times an even number, and a number can only either be even or odd, so \math{n} is even
+             \item \math{p \to q} is true \math{\hfill{\blacksquare}}
+            \end{enumerate}
+        \item Contraposition
+             \begin{enumerate}[i)]
+                 \item set \math{q} as false
+                 \item \math{n} is odd
+                 \item \math{{n}^3 = n \times n \times n}. Since odd number times an odd number will end in odd result, \math{{n}^{3}} is odd
+                 \item an odd number add an odd number will end in even result, so \math{{n}^{3} + 5} is even
+                 \item \math{p} is false
+                 \item \math{p \to q} is true \math{\hfill{\blacksquare}}
+            \end{enumerate}
+    \end{itemize}
+    \item set "3 does not divide \math{n}" as \math{p}, "3 divides \math{{n}^{2} + 2}" as \math{q}
+        \begin{itemize}
+            \item Direct Prove
+                \begin{enumerate}[i)]
+                    \item set \math{p} as true
+                    \item \math{
+                        \begin{cases}
+                            \math{n = 3k + 1} \\
+                            \math{n = 3k + 2}
+                        \end{cases}
+                    }, k is integer
+                    \item
+                        \math{
+                            \begin{cases}
+                                9{k}^{2}+6k+1+2 \\
+                                9{k}^{2}+6k+4+2
+                            \end{cases} \Rightarrow
+                            \begin{cases}
+                                3(3{k}^{2}+2k+1) \\
+                                3(3{k}^{2}+2k+2)
+                            \end{cases}
+                        }, under both conditions, \math{{n}^2 + 2} is a multiple of 3
+                    \item \math{q} is true
+                    \item \math{p \to q} is true \math{\hfill{\blacksquare}}
+                \end{enumerate}
+            \item Contraposition
+                \begin{enumerate}[i)]
+                    \item set \math{q} as false
+                    \item for \math{n}, \math{k} as integer, there are three condition: \math{
+                        \begin{cases}
+                        n = 3k \\
+                        n = 3k + 1\\
+                        n = 3k + 2
+                        \end{cases}
+                    }
+                    \item \math{n^2 + 2 \Rightarrow
+                        \begin{cases}
+                            9{k}^{2} + 2\\
+                            9{k}^{2} + 6k + 3  = 3(3{k}^{2} + 2k + 1)\\
+                            9{k}^{2} + 6k + 6 = 3(3{k}^{2} + 2k + 2)
+                        \end{cases}
+                    }
+                    \item Only \math{9{k}^{2} + 2} match \math{\neg q}
+                    \item \math{n = 3k}, \math{n} divides 3, \math{p} is false
+                    \item \math{p \to q} is true 
+                    \math{\hfill{\blacksquare}}
+                \end{enumerate}
+        \end{itemize}
+\end{enumerate}
+
+
+\section{Problem 4.15}
+\begin{itemize}
+    \item [(e)] Direct Prove; set \math{k \in \mathbb{Z}}, \math{p} as "\math{n^2 + 3n + 4} is even"
+        \begin{enumerate}
+            \item \math{n = \begin{cases}
+                            2k \\
+                            2k + 1
+                        \end{cases}
+                        }
+            \item \math{n^2 + 3n + 4 = 
+                        \begin{cases}
+                            4k^2 + 6k + 4 \\
+                            4{k}^2 + 10k + 8 \\ 
+                        \end{cases} \Rightarrow 
+                        \begin{cases}
+                            2(2{k}^2 + 3k + 2) \\
+                            2(2{k}^2 + 5k + 4)
+                        \end{cases}
+                        }
+            \item under all conditions, the result of \math{n^2 + 3n + 4} can be divided by 2
+            \item \math{p} is true
+            \hfill{\math{\blacksquare}}
+        \end{enumerate}
+    \item [(w)] Contraposition; set \math{p} as "\math{a} and \math{b} are positive real numbers with \math{ab < 10000}, \math{q} as "\math{min(a, b) < 100}"
+        \begin{enumerate}
+            \item set \math{q} as false
+            \item \math{min(a, b) \geq 100}
+            \item the minimum value of \math{a, b} is 100
+            \item \math{ab = 100 \times 100 = 10000}, \math{10000 \nless 10000}
+            \item \math{p} is false
+            \item \math{p \to q} must be true 
+            \hfill{\math{\blacksquare}}
+        \end{enumerate}
+\end{itemize}
+
+\section{Problem 4.26}
+
+\begin{center}
+    \begin{center}
+        \textbf{Truth table}
+    \end{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        p  & q  & \math{p \to q} & \math{\neg (p \to q)} \\
+        \hline
+        T  & T  & T & F\\
+        T  & F  & F & T\\
+        F  & T  & T & F\\
+        F  & F  & T & F\\
+        \hline
+    \end{tabular}
+\end{center} 
+
+\begin{itemize}
+    \item [(b)]  
+        \begin{itemize}
+            \item \textbf{Prove.} (Direct Prove) From the truth table above, in order to prove \math{\neg (p \to q)} true, we need to prove \math{p} as true and \math{q} as false
+            \item \textbf{Disprove.} (show a counterexample) From the truth table above, in order to prove \math{p \to q}, for example, we can make \math{p} as true, and \math{q} as true, so \math{\neg (p \to q)} will always be false
+        \end{itemize}
+    \item [(d)] \math{\forall x : ((\forall n : P(n)) \to Q(x))}
+        \begin{itemize}
+            \item \textbf{Prove.} (Show for general object) Showing that \math{P(n)} is false for all \math{n}, then based on the truth table, the claim will always be true.
+            \item \textbf{Disprove.} (show a counterexample) Given an pair of \math{n, x} that makes \math{P(n)} as true while \math{Q(x)} is false.
+        \end{itemize}
+    \item [(f)] \math{\exists x : ((\exists n : P(n)) \to Q(x))}
+        \begin{itemize}
+            \item \textbf{Prove.} (Show an example) Given an pair of \math{x, n} that makes \math{P(n)} as true while \math{Q(x)} is true.
+            \item \textbf{Disprove.} (show an counterexample) Given an \math{n} that makes \math{P(n)} as true while there is no corresponded \math{x} which makes \math{Q(x)} is false.
+        \end{itemize}
+\end{itemize}
+
+\section{Problem 4.36(j)}
+
+\def\firstcircle{(0,0) circle (1) (0,1)}
+\def\secondcircle{(1,0) circle (1) (1,1)}
+\def\totalrectangle{(-2,-2) rectangle (3,2)}
+\def\rectangletextbox{(0,0) rectangle (0,0)}
+
+Set \math{P_1}, \math{P_2}, \math{P_3} to the corresponded areas shown below. 
+
+\begin{center}
+    \begin{tikzpicture}[text=black]
+         \draw \firstcircle node [above] {\math{A}}
+         \secondcircle node [above] {\math{B}}
+         \totalrectangle node [] {}
+         \rectangletextbox node [midway, left=0.5em] {\math{P_1}}
+         \rectangletextbox node [midway, right=0.5em] {\math{P_2}}
+         \rectangletextbox node [midway, right=3em] {\math{P_3}};
+    \end{tikzpicture}
+\end{center}
+
+\begin{enumerate}[(1)]
+    \item 
+        \begin{center}
+        \centering
+            \begin{minipage}{.4\textwidth}
+                \centering
+                \begin{tikzpicture}[text=black]
+                    % Fill
+                    \begin{scope}
+                        \fill[green] \firstcircle;
+                        \clip \totalrectangle
+                              \firstcircle;
+                    \end{scope}
+                     \draw \firstcircle node [above] {\math{A}}
+                     \secondcircle node [above] {\math{B}}
+                     \totalrectangle node [midway, above=6em] {\math{|A| \Rightarrow P_1 + P_2}};
+                \end{tikzpicture}
+            \end{minipage} % graph 1
+            \begin{minipage}{.4\textwidth}
+            \centering
+                \begin{tikzpicture}
+                    % Fill
+                    \begin{scope}
+                        \fill[blue] \secondcircle;
+                        \clip \totalrectangle
+                              \firstcircle;
+                    \end{scope}
+                     \draw 
+                     \firstcircle node [text=black,above] {\math{A}}
+                     \secondcircle node [text=black,above] {\math{B}}
+                     \totalrectangle node [text=black,midway, above=6em] {\math{|B| \Rightarrow P_2 + P_3}};
+                \end{tikzpicture}
+            \end{minipage} % graph 2
+        \end{center}
+    \item
+        \begin{center}
+        \centering
+            \begin{minipage}{.4\textwidth}
+                \centering
+                \begin{tikzpicture}
+                    \begin{scope}[fill opacity=0.5]
+                        \fill[green] \firstcircle;
+                        \fill[blue] \secondcircle;
+                        \clip \totalrectangle
+                              \firstcircle;
+                    \end{scope}
+                \draw 
+                    \firstcircle node [text=black,above] {\math{A}}
+                    \secondcircle node [text=black,above] {\math{B}}
+                    \totalrectangle node [text=black,midway, above=6em] {\math{A \cup B \Rightarrow P_1 + P_2 + P_3}};
+                \end{tikzpicture}
+            \end{minipage} % graph 3
+            \begin{minipage}{.4\textwidth}
+            \centering
+                \begin{tikzpicture}
+                    \begin{scope}[even odd rule]% first circle without the second
+                        \clip 
+                            \firstcircle
+                            \secondcircle
+                            \totalrectangle;
+                        \fill[green!50!blue] \firstcircle;
+                    \end{scope}
+                    \draw 
+                        \firstcircle node [text=black,above] {\math{A}}
+                        \secondcircle node [text=black,above] {\math{B}}
+                        \totalrectangle node [text=black,midway, above=6em] {\math{A \cap B \Rightarrow P_2}};
+                \end{tikzpicture}
+            \end{minipage} % graph 4
+        \end{center}
+    \item From the graph above, \math{(P_1 + P_2) + (P_2 + P_3) =  (P_1 + P_2 + P_3) + (P_2) = P_1 + 2{P_2} + P_3}. \\\\ The equation is true. \math{\hfill{\blacksquare}}
+\end{enumerate}
+
+\section{Problem 4.45(b)}
+
+\begin{enumerate}[i)]
+    \item Set \math{a = 1}; set Definition (2) as \math{p}
+        \begin{enumerate}[(1)]
+            \item a function can either approach \math{\infty} or \math{a}
+            \item from (ii), \math{f(n) \to 1}
+            \item \math{f(n)} will not approach \math{\infty}
+            \item \math{p} is false 
+            \math{\hfill{\blacksquare}}
+        \end{enumerate}
+    % \item set Definition (1) as \math {p}; \math{n = 1, 2}, \math{C = 3}
+    %     \begin{enumerate}[(1)]
+    %         \item when \math{n = 1}, \math{f(n) = 2}
+    %         \item when \math{n = 2}, \math{f(n) < 2}
+    %         \item The function is decreasing over time
+    %         \item Since \math{2 < C}, \math{f(n) < C}
+    %         \item \math{p} is false
+    %     \end{enumerate}
+    \item Set \math{a = 1}; set Definition (2) as \math{p}
+        \begin{enumerate}[(1)]
+            \item Assume \math{\neg p} (contradiction)
+            \item \math{f(n) \to a} if for any \math{\epsilon > 0}, there is \math{n_{\epsilon}} such that for all \math{n \geq n_{\epsilon}}, \math{|f(n) - a| > \epsilon}.
+            \item \math{\frac{n+3}{n+1} > \epsilon \Rightarrow \frac{2}{\epsilon} - 1 > n}
+            \item set \math{\epsilon = 2}, \math{2/2 - 1 = 0}
+            \item \math{0 \leq 1}, which is a \textbf{fishy} conclusion
+            \item \math{p} has to be true when \math{a = 1}
+            \math{\hfill{\blacksquare}}
+        \end{enumerate}
+    \item Set \math{a = 2}, \math{\epsilon = 0.1}, \math{n = 2}; set Definition (2) as \math{p}
+        \begin{enumerate}[(1)]
+            \item when \math{n = 2}, \math{f(n) = \frac{5}{3}}
+            \item \math{|f(n) - 2| = \frac{1}{3}}
+            \item \math{|f(n) - a| > \epsilon} 
+            \item \math{p} is false when \math{a = 2} 
+            \math{\hfill{\blacksquare}}
+        \end{enumerate} 
+\end{enumerate}
+
+\section{Problem 5.7(f)}
+Define the claim P(n): \math{(1 - \frac{1}{2})(1 - \frac{1}{3})...(1 - \frac{1}{n}) = \frac{1}{n}}
+
+\begin{enumerate}[i)]
+    \item \textbf{Base case} \math{P(1) = 1 - \frac{1}{2} = \frac{1}{2}}
+    \item \textbf{Induction Step} Showing \math{P(n) \to P(n+1)} for all \math{n \geq 2}, using a direct proof
+    \begin{enumerate}[(1)]
+        \item Assume \math{P(n)} is \math{T}: \math{(1 - \frac{1}{2})(1 - \frac{1}{3})...(1 - \frac{1}{n}) = \frac{1}{n}}
+        \item Show \math{P(n+1)} is \math{T}: \math{(1 - \frac{1}{2})(1 - \frac{1}{3})...(1 - \frac{1}{n})(1 - \frac{1}{n+1}) = \frac{1}{n+1}}
+        \item 
+            \begin{equation}
+                \begin{split}
+                    (1 - \frac{1}{2})(1 - \frac{1}{3})...(1 - \frac{1}{n})(1 - \frac{1}{n+1}) & = [(1 - \frac{1}{2})(1 - \frac{1}{3})...(1 - \frac{1}{n})](1 - \frac{1}{n+1}) \\
+                    & = (\frac{1}{n})(1 - \frac{1}{n+1}) \\
+                    & = \frac{n + 1 - 1}{n(n+1)} \\
+                    &= \frac{1}{n+1}
+                \end{split}
+            \end{equation}
+        \item This is exactly what was to be shown. So, \math{P(n+1)} is \math{T}
+    \end{enumerate}
+     \hfill{\math{\blacksquare}}
+\end{enumerate}
+\end{document}

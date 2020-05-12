@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{datetime}
+\usepackage{enumerate}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\title{\bf \Large Pop quiz Lec 6}
+\author{Xinhao Luo}
+\date{\today}
+
+\def\math#1{$#1$}
+
+\setlength{\textheight}{8.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\voffset0.0in
+
+\begin{document}
+\maketitle
+\medskip
+
+\section{Pop Quiz 1}
+
+Write down the claim \math{P(n + 1)} where \math{P(n) = 1^2 + 2^2 + 3^2... + n^2 = (1/6)(n)(n+1)(2n+1)}
+
+\math{P(n+1) = 1^2 + 2^2 + 3^2... + n^2 + {(n+1)}^{2} = (1/6)(n+1)(n+1+1)(2n+2+1)}
+
+\section{Pop Quiz 2}
+
+Show \math{(1/6)n(n+1)(2n+1) + (n+1)^2 = (1/6)(n+1)(n+2)(2n+3)} using algebra
+
+ \begin{equation}
+    \begin{split}
+        (1/6)n(n+1)(2n+1) + (n+1)^2 & = (1/6)(n+1)(n+2)(2n+3)\\
+        (1/6)n(2n+1) + (n+1)  & = (1/6)(n+2)(2n+3) \\
+        (n^2+7n+6)/6 &= (n^2+7n+6)/6
+    \end{split}
+\end{equation}
+
+The equation is true.
+
+\section{Pop Quiz 3}
+
+Prove by contradiction, \math{2sqrt(n) + (1/sqrt(n+1)) <= 2sqrt(n+1)}
+
+\textbf{Prove.}
+
+\begin{enumerate}[i)]
+    \item Assume the claim is false
+    \item 
+        \begin{equation}
+            \begin{split}
+                2 * sqrt(n) + (1/sqrt(n+1)) & > 2sqrt(n+1) \\
+                2 * sqrt(n(n+1)) + 1 & > 2(n+1) \\ 
+                2 * sqrt(n^2+n) & > 2n+1 \\
+                4(n^2+n) > 4{n}^2 + 4n +1 \\
+                0 > 1\\
+            \end{split}
+        \end{equation}
+    \item \math{0 > 1} is a fishy conclusion
+    \item then 2 * sqrt(n) + (1/sqrt(n+1)) <= 2sqrt(n+1)
+\end{enumerate}
+
+\end{document}

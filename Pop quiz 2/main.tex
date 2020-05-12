@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{datetime}
+\usepackage{enumerate}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\title{\bf \Large Pop quiz 2}
+\author{Xinhao Luo}
+\date{\today}
+
+\def\math#1{$#1$}
+
+\setlength{\textheight}{8.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\voffset0.0in
+
+\begin{document}
+\maketitle
+\medskip
+
+\section{prove if r is a irrational (contraposition), then \sqrt{r} is irrational}
+
+\begin{enumerate}
+    \item set \math{p} as r is irrational, \math{q} as \math{\sqrt{r}} is irrational
+    \item from \math{p \to q}, we can get \math{\neg q \to \neg p}, then the statement become: if \math{\sqrt{r}} is rational, then \math{r} is rational
+    \item since for any rational number \math{x}, \math{{x}^2} is also a rational number. For \math{{\sqrt{r}}^2 = r}, since \math{\sqrt{r}} is a rational number, \math{r} is also a rational number. \math{\neg q \to \neg p} is true.
+    \item \math{p \to q} is true
+\end{enumerate}
+
+\section{Prove (contradition) that for all integer \math{a, b, a^2-4b^2 \neq 2}}
+
+\begin{enumerate}
+    \item set \math{a, b} are all possible integers as \math{p}, \math{{a}^2 - {4b}^2 \neq 2} as \math{q}
+    \item to prove \math{p \to q} true, we may prove the following statement is false: \math{p \to \neg q}
+    \item For all integers \math{a, b}, \math{a + b} and \math{a - b} will also be integers. In equation \math{(a-2b)(a+2b) = 2} from \math{\neg q}, \math{a-2b} and \math{a+2b} have to be integers as well
+    \item \math{(1, 2), (-1, -2), (2, 1), (-2, -1)} are possible combinations, while solution of \math{a, b} in all combinations are not integers. 
+    \item Since \math{a, b} can either be an integer or an non-integer. Statement \math{p \to \neg q} is false.
+    \item \math{p \to q} is true
+\end{enumerate}
+
+
+\end{document}

@@ -1,0 +1,170 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{datetime}
+\usepackage{enumerate}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{shapes, backgrounds, automata, positioning, arrows}
+\usepackage[edges]{forest}
+
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+
+\title{\bf \Large ASSIGNMENT 9}
+\author{Xinhao Luo} 
+\date{\today}
+
+\def\math#1{$#1$}
+
+\setlength{\textheight}{8.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\voffset0.0in
+
+\begin{document}
+\maketitle
+\medskip
+
+\section{DMC Problem 22.2}
+\begin{enumerate}[i)]
+    \item If yes, the statement within the question should be yes, which contradict with the question itself.
+    \item If no, the statement within the question should be no, which also contract with the question itself.
+\end{enumerate}
+
+The answer here is neither, as the question itself contains itself.
+
+\section{DMC Problem 22.9}
+\begin{enumerate}[a)]
+    \item Disprove by given example: \math{f(6, 1) = 3 = f(2, 3)}
+    \item Prove by Direct Prove: 
+        \begin{enumerate}[i)]
+            \item let's set \math{B = 1}, and \math{A = 2n, n \in \mathbf{N}}
+            \item \math{f(a. b) = 2n \times 1 / 2 = n}
+            \item We can map every \math{f(a, b) \to n}
+            \item \math{f(a, b)} is not injective, it can only be surjective
+        \end{enumerate}
+    \item From part a we know that function is not injection, it cannot be bijection.
+\end{enumerate}
+
+\section{DMC Problem 22.25}
+\begin{enumerate}[a)]
+    \item Direct prove
+        \begin{enumerate}[i)]
+            \item For any number in {0, 1}, we can map it into any number in natural number, and we may have a table of all possible functions (mappings) for set \math{\zeta} e.g 
+            \item \begin{center}
+                    \begin{tabular}{ |c|c|c|c|c| } 
+                         \hline
+                         f(0)\|f(1) & 1 & 2 & 3 & ... \\ 
+                         \hline
+                         1 & (1, 1) \to & (1, 2) \downarrow & (1, 3) \to & ... \\ 
+                         \hline
+                         2 & (2, 1) \downarrow & \leftarrow (2, 2) & (2, 3) \uparrow & ... \\ 
+                         \hline
+                         3 & (3, 1) \to & (3, 2) \to & (3, 3) \uparrow & ... \\ 
+                         \hline
+                         ... & ... & ... & ... & ... \\ 
+                         \hline
+                    \end{tabular}
+                    \end{center}
+            \item We may be able to may natural number to every element in the function set by traversing through the table, so we have \math{||\zeta|| \leq ||\mathbf{N}||}
+            \item Since \math{N} is countable, \math{\zeta} is countable as well
+        \end{enumerate}
+    \item Direct Prove
+        \begin{enumerate}
+            \item For each element in \math{\mathbf{N}} we will have a corresponded binary function \math{f}, and the set \math{\delta} contains all these functions.
+            \item e.g
+                \begin{enumerate}[1)]
+                    \item 1000000...
+                    \item 0100000...
+                    \item ...
+                \end{enumerate}
+            \item Each of these binary string will have infinite length, so there are infinite number of possible binary strings in the set
+            \item From theorem 22.6, the set of all infinite binary string is not countable
+            \item \math{\delta} is also not countable
+        \end{enumerate}
+\end{enumerate}
+
+\section{DMC Problem 23.33(b)}
+% 4k + 1, 4k + 2, 4k + 3
+\begin{enumerate}[i)]
+    \item \math{\overline{(1^*01^*01^*01^*01)^*}}
+    \item \math{
+    {(1^*01^*01^*01^*0)^*} \cdot {(1^*01^*)} \cup 
+    {(1^*01^*01^*01^*0)^*} \cdot {(1^*01^*1^*01^*)} \cup
+    {(1^*01^*01^*01^*0)^*} \cdot {(1^*01^*1^*01^*1^*01^*)}
+    }
+\end{enumerate}
+
+\section{DMC Problem 24.3(d)}
+\begin{enumerate}[i)]
+    \item Binary String contains at least one "1", and the total number of "1" shouldn't be divided by 3
+    \item \math{(0^*10^*10^*10^*)^* \cdot {(0^*10^*)} \cup 
+                (0^*10^*10^*10^*)^* \cdot {(0^*10^*10^*)}}
+\end{enumerate}
+
+\section{DMC Problem 24.11(z)}
+\begin{figure}[ht] % ’ht’ tells LaTeX to place the figure ’here’ or at the top of the page
+\centering % centers the figure
+\begin{tikzpicture}[shorten >=1pt,node distance=4cm,on grid,auto] 
+   \node[state,initial] (q_0)   {\math{q_0}}; 
+   \node[state] (q_1) [above right=of q_0] {\math{q_1}}; 
+   \node[state] (q_2) [below right=of q_0] {\math{q_2}}; 
+   \node[state] (q_3) [above right=of q_1] {\math{q_3}};
+   \node[state] (q_4) [below right=of q_1] {\math{q_4}};
+   \node[state] (q_5) [below right=of q_2] {\math{q_5}};
+   \node[state] (q_6) [above right=of q_4] {\math{q_6}};
+   \node[state] (q_7) [below right=of q_4] {\math{q_7}};
+   \node[state, accepting] (q_8) [below right=of q_6] {\math{q_8}};
+   \node[state] (q_9) [right=of q_8] {E};
+    \path[->] 
+    (q_0) edge node {0} (q_1) 
+    (q_0) edge node {1} (q_2)
+    (q_1) edge node {0} (q_3)
+    (q_1) edge node {1} (q_4)
+    (q_2) edge node {0} (q_4)
+    (q_2) edge node {1} (q_5)
+    (q_3) edge node {1} (q_6)
+    (q_3) edge node {0} (q_9)
+    (q_4) edge node {0} (q_6)
+    (q_4) edge node {1} (q_7)
+    (q_5) edge node {0} (q_7)
+    (q_5) edge node {1} (q_9)
+    (q_6) edge node {0} (q_9)
+    (q_6) edge node {1} (q_8)
+    (q_7) edge node {0} (q_8)
+    (q_7) edge node {1} (q_9)
+    (q_8) edge node {0, 1} (q_9)
+    (q_9) edge [loop above] node {0, 1};
+\end{tikzpicture}
+\caption{Strings with exactly two 0s and exactly two 1s.}
+\label{fig:my_label}
+\end{figure}
+
+\section{DMC Problem 24.51(b)}
+\begin{enumerate}
+    \item 
+    \begin{figure}[ht] % ’ht’ tells LaTeX to place the figure ’here’ or at the top of the page
+    \centering % centers the figure
+    \begin{tikzpicture}[shorten >=1pt,node distance=4cm,on grid,auto] 
+       \node[state,initial] (q_0)   {\math{q_0}}; 
+       \node[state] (q_1) [above right=of q_0] {\math{q_1}}; 
+       \node[state] (q_2) [below right=of q_0] {\math{E}}; 
+       \node[state, accepting] (q_3) [below right=of q_1] {\math{q_3}};
+       
+        \path[->] (q_0) edge node {1} (q_1)
+                  (q_0) edge node {0} (q_2)
+                  (q_1) edge [loop above] node {0} ()
+                  (q_1) edge node {1} (q_3)
+                  (q_2) edge [loop above] node {0, 1} () 
+                  (q_3) edge [loop below] node {0, 1} ();
+    \end{tikzpicture}
+    \caption{DFA: \math{1^{•n}w \| n \geq 1}, w has n or more 1’s}
+    \label{fig:my_label}
+    \end{figure}
+    \item This language cannot be built with DFA, since DFA itself has no memory. It cannot remember how many 1's has passed. We will need to have \math{\mathbf{n}} states corresponded to each situations (# of 1's we have before). While DFA has finite number of states, there will be at least two situations that our DFA will consider as the same situation if we have build the DFA.
+\end{enumerate}
+
+\end{document}

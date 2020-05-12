@@ -1,0 +1,145 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{datetime}
+\usepackage{enumerate}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,backgrounds}
+\usepackage[edges]{forest}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+
+\title{\bf \Large ASSIGNMENT 8}
+\author{Xinhao Luo} 
+\date{\today}
+
+\def\math#1{$#1$}
+
+\setlength{\textheight}{8.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\voffset0.0in
+
+\begin{document}
+\maketitle
+\medskip
+
+\section{Problem 18.20(a)}
+\begin{enumerate}[i)]
+    \item \math{min(x, y) \leq m \Rightarrow x \leq m \lor y \leq m}
+    \item \begin{equation}
+        \begin{split}
+            P(min(x, y) \leq m) &= P(x \leq m) + P(y \leq m) - P(x \leq m \land y \leq m) \\
+            &= (1 - \frac{1}{2^{m}}) \times 2 - (1 - \frac{1}{2^m})^2 \\
+            &= 1 - \frac{1}{4^m}
+        \end{split}
+    \end{equation}
+\end{enumerate}
+
+\section{Problem 18.33}
+\begin{itemize}
+    \item [(l)] Not Binomial: each draw is not independent, and the probability is not fixed
+    \item [(m)] Binomial
+    \item [(o)] \begin{enumerate}[i)]
+        \item Binomial
+        \item Not binomial, as the number of trails is not fixed
+    \end{enumerate}
+    \item [(p)] Binomial
+    \item [(q)] Not Binomial, each pick is not independent
+\end{itemize}
+
+\section{Problem 19.11}
+\begin{enumerate}
+    \item In total, there are 16 possible outcomes: 11 lose and 5 wins
+    \item \math{E = \frac{10 \times 5 - 11 x}{16} = \frac{25}{8} - \frac{11}{16}x}
+\end{enumerate}
+
+\section{Problem 19.35}
+\begin{enumerate}[a)]
+    \item 
+        \begin{enumerate}[i)]
+            \item Calculate the possibility of Double-head coins after 10 flip \begin{equation}
+                    \begin{split}
+                        P(\text{Double-head}\|\text{10 Head}) &= \frac{P( \text{10 Head}\|\text{ Double-side}) \times P(\text{ Double-side})}{P(\text{10 Head})} \\
+                        &= \frac{P(\text{10 Head}\|D) P(\text{Double-Head})}{P(\text{10 Head}\|\text{Double-Head}))P(\text{Double-Head}) + P({10 Head}\|\text{Fair Coins})P(\text{Fair Coins})} \\
+                        &= \frac{1 \times \frac{1}{1025}}{1 \times \frac{1}{1025} + (\frac{1}{2})^{10} \times \frac{1024}{1025}} \\
+                        &= \frac{1}{2}
+                    \end{split}
+                \end{equation}
+            \item \math{E = \frac{1}{2} \times 100 + \frac{1}{2} \times \frac{1}{2} \times 100 = 75}
+        \end{enumerate}
+    \item 
+    \begin{enumerate}
+        \item From Part a, we know that \math{P(\text{Double-head}) = \frac{1}{2}}
+        \item 
+        \begin{equation}
+            \begin{split}
+                E[\text{Head}] &= E[\text{Head}\|\text{Double-Head}] \times P(\text{Double-Head}) + E[\text{Head}\|\text{Fair}] \times P(\text{Fair}) \\
+                &= \frac{1}{P(\text{Head}\|\text{Double-Head})} \times P(\text{Double-Head}) + \frac{1}{P(\text{Head}\|\text{Fair})} \times P(\text{Fair}) \\
+                &= \frac{1}{1} \times \frac{1}{2} + \frac{1}{\frac{1}{2}} \times \frac{1}{2} \\
+                &= 1.5
+            \end{split}
+        \end{equation}
+    \end{enumerate}
+\end{enumerate}
+
+\section{Problem 19.54}
+\begin{enumerate}[a)]
+    \item 
+        \begin{enumerate}[i)]
+            \item \math{P(\text{One male}) = \frac{1}{3}}
+            \item \math{E(\text{One male}) = \frac{1}{\frac{1}{P}} = 3}
+            \item \math{E(\text{Two male}) = 3 \times 2 = 6}
+        \end{enumerate}
+    \item From Part a, we only need to change the \math{P(\text{One Male}) = \frac{1}{2}}, and we can get \math{E(\math{Two Male}) = 4}
+    \item From Part a, we only need to change the \math{P(\text{One Male}) = \frac{2}{3}}, and we can get \math{E(\math{Two Male}) = 3}
+\end{enumerate}
+
+\section{Problem 20.11}
+\begin{enumerate}[a)]
+    \item \math{\frac{1}{10!}}
+    \item 0
+    \item \math{\frac{\binom{10}{2}}{10!}}
+    \item \math{\frac{1}{10} + \frac{9}{10} \times \frac{1}{9} + \frac{8}{10} \times \frac{1}{8} + ... + \frac{1}{10} \times 1 = 1}
+\end{enumerate}
+
+\section{Problem 21.37}
+\begin{enumerate}
+    \item \begin{enumerate}[i)]
+        \item \math{E[X] = 1}
+        \item \begin{enumerate}[i)]
+            \item Let \math{X = X_1 + X_2 ... + X_{100}} 
+            \item From Prob. 20.11, We know \math{P[X_1] = P[X_2] ... = P[X_{100}]}
+            \item \math{E[X] = E[X_1 + X_2 ... + X_{100}] = 1 \times \frac{1}{100} 100 = 1}
+            \item \math{var[X] = E[X^2] - E[X]^2}, and we know \math{E[X] = 1}
+            \item \begin{equation}
+                \begin{split}
+                    E[X]^2 &= E[(X_1 + X_2 ... + X_{100})^2] \\
+                    &= \sum^{100}_{i=1} E[(X_i)^2] + 2 \sum_{i, j \in (1,100)} E[X_i, X_j]
+                \end{split}
+            \end{equation}
+            \item Since \math{X_i} are Bernoulli, \math{{E[X_i}^2] = p = \frac{1}{100}}
+            \item \math{E[X_i, X_j] = E[X_i = 1 and X_j = 1] = \frac{1}{100} \times \frac{1}{99}}
+            \item The total number of terms like \math{E[X_i, X_j] = \binom{100}{2}}
+            \item \begin{equation}
+                \begin{split}
+                   \frac{1}{100} \times 100 + 2 \times \frac{100 \times 99}{2} \times \frac{1}{100\times99} - 1 = 1
+                \end{split}
+            \end{equation}
+            \item The answer is 1
+        \end{enumerate}
+    \end{enumerate}
+    \item \begin{enumerate}[i)]
+        \item Since \math{E[X] = 1}
+        \item \math{P[X = 50] = P[X \geq 50] - P[X \geq 51] = \frac{1}{50} - \frac{1}{51}}
+        \item \math{P[X > 50] \leq P[X \geq 50] - P[X = 50] = \frac{1}{50} - \frac{1}{50}\frac{1}{51} = \frac{1}{51}}
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}

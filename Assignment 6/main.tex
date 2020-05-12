@@ -1,0 +1,120 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{datetime}
+\usepackage{enumerate}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,backgrounds}
+\usepackage[edges]{forest}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+
+\title{\bf \Large ASSIGNMENT 6}
+\author{Xinhao Luo} 
+\date{\today}
+
+\def\math#1{$#1$}
+
+\setlength{\textheight}{8.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\voffset0.0in
+
+\begin{document}
+\maketitle
+\medskip
+
+\section{Problem 13.8}
+\begin{enumerate}[a)]
+    \item \math{26^5}
+    \item \math{\frac{26!}{21!}}
+    \item \math{26^2}
+    \item \math{26^2 * 2}
+    \item \math{26^2 * 2 - 1}
+\end{enumerate}
+
+\section{Problem 13.44}
+\begin{enumerate}[a)]
+    \item \math{\frac{10!}{4!6!} = 210}
+    \item \math{\frac{10!}{(10 - 4)!} = 5040}
+    \item \math{\binom{14 - 1}{10 - 1} = \frac{13!}{9!4!} = 715}
+    \item \math{10^4}
+\end{enumerate}
+
+\section{Problem 13.50}
+\begin{enumerate}[a)]
+    \item \math{\binom{10 - 1}{4 - 1} = 84}
+    \item \math{\binom{10 + 4 - 1}{4 - 1} = 286}
+    \item \math{\binom{12 + 4 - 1}{4 - 1} = 455}
+\end{enumerate}
+
+\section{Problem 13.51(a)}
+\begin{enumerate}
+    \item The number of all possible combination of 20-bit binary string is \math{2^{20}}
+    \item Set \math{Q(n)} as the number of 20-bit binary string does not contain "00"
+    \item Base case: 
+        \begin{enumerate}
+            \item \math{Q(0) = 0}
+            \item \math{Q(1) = 2}
+            \item \math{Q(2) = 3}
+            \item \math{Q(3) = 5}
+        \end{enumerate}
+    \item For \math{n \geq 4}, we have two cases:
+        \begin{enumerate}
+            \item String start from "1" \\
+                So we have "1"+\math{Q(n - 1)}
+            \item String start from "0" \\
+                The second digit must be "1" \\
+                So we have "01"+\math{Q(n - 2)}
+        \end{enumerate}
+    \item In conclusion, \begin{equation}
+            \begin{split}
+                Q(n) = Q(n - 1) + Q(n - 2)
+            \end{split}
+        \end{equation}
+    \item The result will then be \math{2^{20} - Q(20)}, \math{Q(20) = 17711}
+    \item 
+\end{enumerate}
+
+\section{Problem 13.61}
+
+\math{a = 2x}, \math{b = \sqrt{x}}, \math{n = 10} \\
+
+\begin{equation}
+    \begin{split}
+        \binom{10}{k} (2x)^k (\sqrt{x})^{10-k} &= \binom{10}{k} 2^kx^k x^{5+\frac{k}{2}} \\
+        &= \binom{10}{k} 2^k x^{5+\frac{k}{2}}
+    \end{split}
+\end{equation}
+
+\begin{itemize}
+    \item [\math{x^3}] \math{5+\frac{k}{2} = 3}, \math{k = -4}, coefficient is \math{0} (section not exist)
+    \item [\math{x^4}] \math{5+\frac{k}{2} = 4}, \math{k = -2}, coefficient is \math{0} (section not exist)
+    \item [\math{x^5}] \math{5+\frac{k}{2} = 5}, \math{k = 0}, \math{\binom{10}{0} 2^0 x^5 = x^5}, the coefficient is 1
+    \item [\math{x^6}] \math{5+\frac{k}{2} = 6}, \math{k = 2}, \math{\binom{10}{2} 2^2 x^6 = 180 x^6}, the coefficient is 180
+    \item [\math{x^7}] \math{5+\frac{k}{2} = 7}, \math{k = 4}, \math{\binom{10}{4} 2^4 x^7 = 3360 x^5}, the coefficient is 3360
+\end{itemize}
+
+\section{Problem 14.5}
+\begin{enumerate}[a)]
+    \item \math{\binom{10 + 4 - 1}{4 - 1} = \frac{13!}{10!3!} = 286}
+    \item \math{\frac{15!}{5!5!5!}}
+    \item \math{\binom{10 + 10 - 1}{10 - 1}}
+    \item \math{\frac{9!}{3!3!3!}}
+\end{enumerate}
+
+\section{Problem 14.14}
+\begin{enumerate}[a)]
+    \item \math{\binom{10}{6} + \binom{10}{7} + \binom{10}{8} + \binom{10}{9} + \binom{10}{10}}
+    \item \math{2^5 + 2^4 * 5}
+    \item \math{2^5 + 2^4 * 5}
+    \item \math{(2^5 + 2^4 * 5) * 2 - 2}
+\end{enumerate}
+
+\end{document}

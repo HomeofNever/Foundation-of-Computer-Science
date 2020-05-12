@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{datetime}
+\usepackage{enumerate}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,backgrounds}
+\usepackage[edges]{forest}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+
+\title{\bf \Large ASSIGNMENT 7}
+\author{Xinhao Luo} 
+\date{\today}
+
+\def\math#1{$#1$}
+
+\setlength{\textheight}{8.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\voffset0.0in
+
+\begin{document}
+\maketitle
+\medskip
+
+\section{Problem 15.39(q)}
+Assume that friend is mutual: only both side agree then they become friends, so \math{(A, B)} is equivalent to \math{(B, A)}
+
+\begin{enumerate}
+    \item There are in total 6 pairs among 4 people: (A, B), (A, C), (A, D), (B, C), (B, D), (C, D)
+    \item Each pair may have two different status: they are not friends, or they are friends. We use 1 to represent friendship, while 0 is the friendship does not exist
+    \item The binary sequence with length 6 has in total \math{2^6 = 64} possible result
+    \item The possibility when randomly decide friendship is \math{\frac{1}{64}}
+\end{enumerate}
+
+\section{Problem 16.4}
+
+\begin{enumerate}[a)]
+    \item There are two world, and there is only one world with 100 black raven, so the chance is \math{1/2}
+    \item 
+    \begin{enumerate}
+        \item \begin{equation}
+            \begin{split}
+                P(\text{all black ravens} \| \text{one black raven exist}) &= \frac{P(\text{all black ravens} \cap \text{1 Black Raven exists})}{P(\text{1 Black Raven exists})} \\
+                &= \frac{\frac{1}{2} \times \frac{100}{10^6}}{\frac{1}{2} \times \frac{100}{10^6} + \frac{1}{2} \times \frac{1000}{10^6}} \\
+                &= \frac{1}{11}
+            \end{split}
+        \end{equation} 
+    \end{enumerate}
+\end{enumerate}
+
+\section{Problem 16.37}
+\begin{enumerate}[a)]
+    \item \math{\frac{5}{100} \times 1 \times 1 + \frac{95}{100} \times \frac{1}{2} \times \frac{1}{2} = \frac{23}{80}}
+    \item \math{\frac{5}{100} \times 0 + \frac{95}{100} \times \frac{1}{2} \times \frac{1}{2} = \frac{19}{80}}
+    \item \math{\frac{5}{100} \times 1 \times 1 + \frac{95}{100} \times \frac{1}{2} \times \frac{1}{2} \times 2 = \frac{21}{40}}
+\end{enumerate}
+
+\section{Problem 16.40}
+\begin{enumerate}[a)]
+    \item \math{P(\text{two girls}\|\text{one is a girl}) = \frac{P(\text{two girls} \cap \text{one is a girl})}{P(\text{one is a girl})} = \frac{1}{3}}
+    \item Set \math{Q = P(\text{a girl named Leilitoon})}
+    \begin{equation}
+        \begin{split}
+            P(\text{Two girls} \| \text{A girl named Leilitoon}) &= \frac{P(\text{two girls} \cap \text{a girl named Leilitoon})}{P(\text{a girl named Leilitoon})} \\
+            &= \frac{\frac{1}{4}Q^2 + 2 \times \frac{1}{4}Q(1-Q)}{\frac{1}{4}Q^2 + 2 \times \frac{1}{4}Q(1-Q) + 2 \times \frac{1}{4}Q} \\
+            &= \frac{2 - Q}{4 - Q}
+        \end{split}
+    \end{equation}
+    Since Leiliton is a rare name, Q will be close to 0, so the final possibility would tend to be \math{\frac{2}{4} = \frac{1}{2}}
+    \item Set \math{Q = P(\text{Sunday}) = \frac{1}{7}} \\
+    From part c), we may have \math{P(\text{two girls} \| \text{Sunday}) = \frac{2 - Q}{4 - Q}}, where \math{Q = \frac{1}{7}} with similar reasoning\\
+    \math{\frac{2 - \frac{1}{7}}{4 - \frac{1}{7}} = \frac{13}{27}}
+\end{enumerate}
+
+\section{Problem 17.9}
+The \math{8 \times 8} chessboard has 64 squares in total (32 whites and 32 blacks)
+
+\begin{enumerate}[a)]
+    \item \math{P(A \| B) = \frac{P(A \cap B)}{P(B)} = \frac{0}{\frac{1}{2}} = 0 \neq P(A) = \frac{1}{2}}, so A and B are dependent event
+    \item \math{P(A \| B) = \frac{P(A \cap B)}{P(B)} = \frac{\frac{1}{4}}{\frac{1}{2}} = \frac{1}{2} = P(A) = \frac{1}{2}}, so A and B are independent event
+    \item \math{P(A \| B) = \frac{P(A \cap B)}{P(B)} = \frac{\frac{1}{2} \times \frac{1}{2}}{\frac{1}{2}} = \frac{1}{2} = P(A) = \frac{1}{2}}, so A and B are independent event
+\end{enumerate}
+
+\section{Problem 17.28}
+
+\math{P(\text{100 sided die and five time die with same number}) = 1 - \frac{100}{100} \times \frac{99}{100} \times \frac{98}{100} \times \frac{97}{100} \times{96}{100} = \frac{150859}{1562500} }
+
+\end{document}

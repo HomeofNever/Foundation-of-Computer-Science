@@ -1,0 +1,532 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{datetime}
+\usepackage{enumerate}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,backgrounds}
+\usepackage[edges]{forest}
+
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+
+\title{\bf \Large ASSIGNMENT 4}
+\author{Xinhao Luo} 
+\date{\today}
+
+\newcommand*{\circled}[1]{\lower.7ex\hbox{\tikz\draw (0pt, 0pt)%
+    circle (.5em) node {\makebox[1em][c]{\small #1}};}}
+
+\def\math#1{$#1$}
+
+\setlength{\textheight}{8.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\voffset0.0in
+
+\begin{document}
+\maketitle
+\medskip
+
+\section{Problem 7.4(c)}
+
+\begin{center}
+    \begin{tabular}{ |c|c|c|c|c|c|c|c| } 
+    \hline
+    \multicolumn{7}{|c|}{method of difference} \\
+     \hline
+        n & 0 & 1 & 2 & 3 & 4 & 5 \\
+        \hline
+        A(n) & 1 & 2 & 5 & 10 & 17 & 26\\ 
+        \hline
+        A'(n) & & 1 & 3 & 5 & 7 & 9 \\
+        \hline
+        A''(n) & & & 2 & 2 & 2 & 2 \\
+     \hline
+    \end{tabular}
+\end{center}
+
+This function is 2nd order polynomial. \\
+
+\math{A(n) = b_0 + b_1n + b_2n^2 \Rightarrow
+    \begin{cases} 
+        b_0 = 1 \\ 
+        b_0 + b_1 + b_2 = 2 \\
+        b_0 + 2b_2 + 4b_2 = 5
+    \end{cases} \Rightarrow
+    \begin{cases} 
+        b_0 = 1 \\ 
+        b_1 = 0 \\
+        b_2 = 1
+    \end{cases} 
+} \\
+\math{A(n) = 1 + n^2, n \geq 0} \\
+
+\textit{Proof.} Set \math{P(n): A_n = 1 + n^2}, where \math{n \in \mathbb{N}}.
+\begin{itemize}
+    \item [Base Case] \math{P(0) = 1}, \math{P(1) = 2}; both true
+    \item [Induction step] Prove \math{P(n) \to P(n+1)}
+        \begin{itemize}
+            \item Assume \math{P(0) \land P(1) ... P(n)} are true
+            \item \begin{equation}
+                \begin{split}
+                    A_{n+1} &= 2A_n - A_{n-1} + 2 \\
+                    &= 2(n^2 + 1) - ({(n-1)}^2 + 1) + 2 \\
+                    &= 2n^2 + 2 - n^2 + 2n - 2 + 2 \\
+                    &= n^2 + 2n + 2
+                \end{split}
+            \end{equation}
+            \item \math{P(n) \to P(n+1)} is true
+        \end{itemize}
+\end{itemize}
+
+By induction, \math{P(n)} is true for \math{n \in \mathbb{N}} \math{\hfill{\blacksquare}}
+
+\section{Problem 7.56 (a),(b),(c)}
+\begin{enumerate}[(a)]
+    \item \begin{enumerate}[(1)]
+            \item \math{M(0, k) = 0}, 
+            \item \math{M(n, 1) = n}, since we need to do linear search here.
+            \item \math{M(n ,k) = {\log_2 (n)} + 1} in worst case. \\ The number of times to do binary search is \math{\log_2 n}, but in worst case, we need an extra time to identify the exact number when the number of floor is odd.
+        \end{enumerate}
+    \item Let the total number of floor \math{n}.
+        \begin{enumerate}[i)]
+            \item \math{\log_2 (n - x) + 1}
+            \item \math{log_2 (x) + 1}
+        \end{enumerate}
+    \item \begin{enumerate}[i)]
+        \item \math{M(7, 3) = 3}
+        \item \math{M(8, 3) = 4}
+        \item \math{M(9, 3) = 4}
+        \item \math{M(10, 3) = 4}
+    \end{enumerate}
+\end{enumerate}
+
+
+\section{Problem 8.6}
+
+We assume the definition of the set is the following: \\
+
+\begin{align*}
+    \circled{1} & 2^0 \in S \\
+    \circled{2} & 2^n \in S \to 2^{n+1} \in S
+\end{align*}
+
+\begin{enumerate}[(a)]
+    \item \math{P(n)} : Every Element in set is non-negative power of 2
+        \begin{itemize}
+            \item [Base Case] \math{P(0) = 2^0 = 1}, which is a non-negative power of 2
+            \item [Induction Step] Assume \math{P(n) = 2^n}, \math{n \geq 0} is true
+                \begin{itemize}
+                    \item The constructor \math{n+1} would always larger than 0 as \math{n} starts from \math{0}
+                    \item \math{2^{n+1}} will always be a non-negative power of 2
+                \end{itemize}
+        \end{itemize}
+        By structural induction, every element in set will always a non-negative power of 2 is true. \math{\hfill{\blacksquare}}
+    \item \math{P(n)} : Every non-negative power of 2 is in the set
+        \begin{itemize}
+            \item [Base Case] \math{P(0) = 2^0 = 1}; \math{1} is in the set, \math{P(0)} is true 
+            \item [Induction Step] The constructor shows that once we have \math{2^n}, \math{2^{n+1}} will then be in the set. We could prove the relationship use direct proof
+                \begin{itemize}
+                    \item Assume \math{P(1) \land P(2) \land ... P(n-1) \land P(n)} is true
+                    \item From constructor, since \math{P(n)} is true, we would get \math{2^{n+1}} is in the set
+                    \item \math{P(n+1)} is true
+                \end{itemize}
+        \end{itemize}
+     By structural induction, every element non-negative power of 2 is in the set is true. \math{\hfill{\blacksquare}}
+\end{enumerate}
+
+\section{Problem 8.18}
+
+\begin{enumerate}[(a)]
+    \item Graph Example
+        \begin{itemize}
+            \item RBT 
+                \begin{itemize}
+                    \item [5 vertices]
+                    \begin{tabular}{ |c|c|c|c|c| } 
+                        EMPTY
+                        & \begin{forest}
+                            for tree={
+                                grow=south,
+                                circle, draw, minimum size=3ex, inner sep=1pt,
+                                s sep=3mm
+                                    }
+                            [A]
+                        \end{forest} & 
+                         \begin{forest}
+                            for tree={
+                                grow=south,
+                                circle, draw, minimum size=3ex, inner sep=1pt,
+                                s sep=3mm
+                                    }
+                          [A
+                            [B]
+                         ]
+                        \end{forest} &
+                         \begin{forest}
+                            for tree={
+                                grow=south,
+                                circle, draw, minimum size=3ex, inner sep=1pt,
+                                s sep=3mm
+                                    }
+                            [A
+                                [B]
+                                [C]
+                            ]
+                        \end{forest} & 
+                         \begin{forest}
+                            for tree={
+                                grow=south,
+                                circle, draw, minimum size=3ex, inner sep=1pt,
+                                s sep=3mm
+                                    }
+                            [A
+                                [B
+                                    [D]
+                                    [E]
+                                ]
+                                [C]
+                            ]
+                        \end{forest}
+                    \end{tabular}
+                    \item [6 vertices]
+                        \begin{tabular}{ |c|c|c|c|c| } 
+                        EMPTY
+                        & \begin{forest}
+                            for tree={
+                                grow=south,
+                                circle, draw, minimum size=3ex, inner sep=1pt,
+                                s sep=3mm
+                                    }
+                            [A]
+                        \end{forest} & 
+                         \begin{forest}
+                            for tree={
+                                grow=south,
+                                circle, draw, minimum size=3ex, inner sep=1pt,
+                                s sep=3mm
+                                    }
+                          [A
+                            [B]
+                         ]
+                        \end{forest} &
+                         \begin{forest}
+                            for tree={
+                                grow=south,
+                                circle, draw, minimum size=3ex, inner sep=1pt,
+                                s sep=3mm
+                                    }
+                            [A
+                                [B]
+                                [C]
+                            ]
+                        \end{forest} & 
+                         \begin{forest}
+                            for tree={
+                                grow=south,
+                                circle, draw, minimum size=3ex, inner sep=1pt,
+                                s sep=3mm
+                                    }
+                            [A
+                                [B
+                                    [D]
+                                    [E]
+                                ]
+                                [C 
+                                    [F]
+                                ]
+                            ]
+                        \end{forest}
+                    \end{tabular}
+                    \item [7 vertices]
+                        \begin{tabular}{ |c|c|c|c|c| } 
+                        EMPTY
+                        & \begin{forest}
+                            for tree={
+                                grow=south,
+                                circle, draw, minimum size=3ex, inner sep=1pt,
+                                s sep=3mm
+                                    }
+                            [A]
+                        \end{forest} & 
+                         \begin{forest}
+                            for tree={
+                                grow=south,
+                                circle, draw, minimum size=3ex, inner sep=1pt,
+                                s sep=3mm
+                                    }
+                          [A
+                            [B]
+                         ]
+                        \end{forest} &
+                         \begin{forest}
+                            for tree={
+                                grow=south,
+                                circle, draw, minimum size=3ex, inner sep=1pt,
+                                s sep=3mm
+                                    }
+                            [A
+                                [B]
+                                [C]
+                            ]
+                        \end{forest} & 
+                         \begin{forest}
+                            for tree={
+                                grow=south,
+                                circle, draw, minimum size=3ex, inner sep=1pt,
+                                s sep=3mm
+                                    }
+                            [A
+                                [B
+                                    [D]
+                                    [E]
+                                ]
+                                [C
+                                    [F]
+                                    [G]
+                                ]
+                            ]
+                        \end{forest}
+                    \end{tabular}
+                \end{itemize} 
+            \item RFBT
+                \begin{itemize}
+                    \item [5 vertices]
+                        \begin{tabular}{ |c|c|c| }
+                            \begin{forest}
+                                for tree={
+                                    grow=south,
+                                    circle, draw, minimum size=3ex, inner sep=1pt,
+                                    s sep=3mm
+                                        }
+                                [A]
+                            \end{forest} & 
+                             \begin{forest}
+                                for tree={
+                                    grow=south,
+                                    circle, draw, minimum size=3ex, inner sep=1pt,
+                                    s sep=3mm
+                                        }
+                                [A
+                                    [B]
+                                    [C]
+                                ]
+                            \end{forest} & 
+                             \begin{forest}
+                                for tree={
+                                    grow=south,
+                                    circle, draw, minimum size=3ex, inner sep=1pt,
+                                    s sep=3mm
+                                        }
+                                [A
+                                    [B
+                                        [D]
+                                        [E]
+                                    ]
+                                    [C]
+                                ]
+                            \end{forest}
+                        \end{tabular}
+                    \item [6 vertices] Not Possible.
+                    \item [7 vertices]
+                        \begin{tabular}{ |c|c|c| }
+                            \begin{forest}
+                                for tree={
+                                    grow=south,
+                                    circle, draw, minimum size=3ex, inner sep=1pt,
+                                    s sep=3mm
+                                        }
+                                [A]
+                            \end{forest} &
+                             \begin{forest}
+                                for tree={
+                                    grow=south,
+                                    circle, draw, minimum size=3ex, inner sep=1pt,
+                                    s sep=3mm
+                                        }
+                                [A
+                                    [B]
+                                    [C]
+                                ]
+                            \end{forest} & 
+                             \begin{forest}
+                                for tree={
+                                    grow=south,
+                                    circle, draw, minimum size=3ex, inner sep=1pt,
+                                    s sep=3mm
+                                        }
+                                [A
+                                    [B
+                                        [D]
+                                        [E]
+                                    ]
+                                    [C
+                                        [F]
+                                        [G]
+                                    ]
+                                ]
+                            \end{forest}
+                        \end{tabular}
+                \end{itemize}
+        \end{itemize}
+    \item We define RFBT as the following:
+    \begin{align*}
+        \circled{1} & \text{A single root-node is an RFBT} \\
+        \circled{2} & \text{If } T_1, T_2 \text{ are disjoint RFBTs with root } r_1, r_2 \text{ , then linking } r_1, r_2 \\ & \text{to a new root } r \text{ gives a new RFBT with root } r
+    \end{align*}
+        \math{P(n)}: the \math{n}th RFBT has odd number of vertices,
+        \begin{itemize}
+            \item [Base Case] \math{P(1)}: RFBT with single node has odd number of vertices.
+            \item [Induction Steps] In the constructor, a single-root node is the parent, and it will accept two new disjoint RFBTs. We use direct proof to prove \math{n}th RFBT will always have odd number of vertices.
+                \begin{enumerate}
+                    \item Assume \math{P(1)\land P(2)\land...\land P(n-1)\land P(n)} is true
+                    \item Any new RFBT will have the sum of two odd number plus 1 vertices. (The root node)
+                    \item Since odd number + odd number = even number, while even number + odd number = an odd number, the children will always have odd number vertices
+                    \item \math{P(n)} is always true
+                \end{enumerate}
+        \end{itemize}
+        
+    By structural induction, \math{P} is true. \math{\hfill{\blacksquare}}
+\end{enumerate}
+
+\section{Problem 9.3 (b),(e)}
+
+\begin{itemize}
+    \item [(b)] \math{\sum_{i=1}^n \sum_{j=1}^i (i+j)}
+        \begin{itemize}
+            \item [Compute the inner side] \begin{equation}
+                \begin{split}
+                    \sum_{j=1}^i (i+j) &= \sum_{j=1}^i i + \sum_{j=1}^i j \\
+                    &= \sum_{j=1}^i i+\frac{1}{2}i(i+1) \\ 
+                    &= i\sum_{j=1}^i 1 + \frac{1}{2}i(i+1) \\
+                    &= i(i + 1 - 1) + \frac{1}{2}i(i+1) \\
+                    &= i^2 + \frac{i^2 + i}{2}
+                \end{split}
+            \end{equation}
+            \item Combined
+                \begin{equation}
+                    \begin{split}
+                       \sum_{i=1}^n i^2 + \frac{i^2 + i}{2} &= \sum_{i=1}^n i^2 + \sum_{i=1}^n \frac{i^2 + i}{2} \\
+                       &= \sum_{i=1}^n i^2 + \frac{1}{2} \sum_{i=1}^n i^2 + i \\
+                       &= \sum_{i=1}^n i^2 + \frac{1}{2} (\sum_{i=1}^n i^2 + \sum_{i=1}^n i) \\
+                       &= \frac{1}{6}n(n+1)(2n+1) + \frac{1}{2}(\frac{1}{6}n(n+1)(2n+1) + \frac{1}{2}n(n+1)) \\
+                       &= \frac{1}{6}n(n+1)(2n+1) + \frac{1}{12}n(n+1)(2n+1) + \frac{1}{4}n(n+1) \\
+                       &= \frac{1}{2}n{(n+1)}^2
+                    \end{split}
+                \end{equation}
+        \end{itemize}
+        \math{\hfill{\blacksquare}}
+    \item [(e)] \math{\sum_{i=0}^n \sum_{j=0}^m 2^{i+j}}
+        \begin{itemize}
+            \item [Compute the inner side] \begin{equation}
+                \begin{split}
+                   \sum_{j=0}^m 2^{i+j} &=\sum_{j=0}^m 2^i \times 2^j \\
+                   &= 2^i \sum_{j=0}^m 2^j \\
+                   &= 2^i(2^{m+1} - 1)
+                \end{split}
+            \end{equation}
+            \item \begin{equation}
+                    \begin{split}
+                      \sum_{i=0}^n \sum_{j=0}^m 2^{i+j} &= \sum_{i=0}^n 2^i(2^{m+1} - 1) \\
+                       &= (2^{m+1} - 1) \sum_{i=0}^n 2^i \\
+                       &= (2^{m+1} - 1)(2^{n+1} - 1)
+                    \end{split}
+                \end{equation}
+        \end{itemize}
+        \math{\hfill{\blacksquare}}
+\end{itemize}
+
+\section{Problem 9.37}
+
+\begin{enumerate}[(a)]
+    \item \math{n^3}
+        \begin{enumerate}[i)]
+            \item \math{\lim_{n \to \infty} \frac{n^3}{n^2{\log_2^2 n}} = \infty}, \math{g \in O(f)}
+            \item \math{\lim_{n \to \infty} \frac{n^3}{n^3 + n^2} = 1}. the result is constant, so both \math{f \in O(g)} and \math{g \in O(f)}
+            \item \math{\lim_{n \to \infty} \frac{n^3}{n^{3.5}} = 0}, \math{f \in O(g)}
+            \item \math{\lim_{n \to \infty} \frac{n^3}{2^{3\log_2 n + 2}} = \frac{n^3}{4n^3} = \frac{1}{4}}. the result is constant, so both \math{f \in O(g)} and \math{g \in O(f)}
+            \item \math{\lim_{n \to \infty} \frac{n^3}{2^{\log_2^2 n}} = 0}, \math{f \in O(g)}
+        \end{enumerate}
+    \item \math{2^n}
+        \begin{enumerate}[i)]
+            \item \math{\lim_{n \to \infty} \frac{2^n}{3^n} = 0}, \math{f \in O(g)}
+            \item \math{\lim_{n \to \infty} \frac{2^n}{2^{\sqrt{n}}} = \infty}, \math{g \in O(f)}
+            \item \math{\lim_{n \to \infty} \frac{2^n}{2^{2n}} = \lim_{n \to \infty} 2^{-n} =  0}, \math{f \in O(g)}
+            \item \math{\lim_{n \to \infty} \frac{2^n}{2^{n+\log_2 n}} = 0}, \math{f \in O(g)}
+            \item \math{\lim_{n \to \infty} \frac{2^n}{2^{n+4} + 2^{\sqrt{n}}} = \frac{1}{16}}. the result is constant, so both \math{f \in O(g)} and \math{g \in O(f)}
+        \end{enumerate}
+    \item \math{n!}
+         \begin{enumerate}[i)]
+            \item \math{\lim_{n \to \infty} \frac{n!}{n^n} = 0}, \math{f \in O(g)}
+            \item \math{\lim_{n \to \infty} \frac{n!}{n^{n/2}} = \infty}, \math{g \in O(f)}
+            \item \math{\lim_{n \to \infty} \frac{n!}{(n+1)!} = 0}, \math{f \in O(g)}
+            \item \math{\lim_{n \to \infty} \frac{n!}{2^{nlog n}} = 0}, \math{f \in O(g)}
+            \item \math{\lim_{n \to \infty} \frac{n!}{2^{n^2}} = 0}, \math{f \in O(g)}
+         \end{enumerate}
+    \item \math{\sum_{i=1}^n i^2 = \frac{1}{6}n(n+1)(2n+1) = \frac{2n^2+3n+1}{6}}
+         \begin{enumerate}[i)]
+             \item \math{\lim_{n \to \infty} \frac{\frac{1}{6}n(n+1)(2n+1)}{n^2} = \infty}, \math{g \in O(f)}
+            \item \math{\lim_{n \to \infty} \frac{\frac{1}{6}n(n+1)(2n+1)}{n^2 \log n} = \infty}, \math{g \in O(f)}
+            \item \math{\lim_{n \to \infty} \frac{\frac{1}{6}n(n+1)(2n+1)}{n^3} = \frac{1}{3}}. The result is constant, so both \math{f \in O(g)} and \math{g \in O(f)}
+            \item \math{\lim_{n \to \infty} \frac{\frac{1}{6}n(n+1)(2n+1)}{4^{ \log_2 n}} = \infty}, \math{g \in O(f)}
+            \item \math{\lim_{n \to \infty} \frac{\frac{1}{6}n(n+1)(2n+1)}{8^{ \log_2 n}} = \frac{1}{3}}. The result is constant, so both \math{f \in O(g)} and \math{g \in O(f)}
+         \end{enumerate}
+    \item \math{\sum_{i=1}^n \sum_{j=1}^n 2^{i+j} = (2^{n+1} - 2)^2}
+         \begin{enumerate}[i)]
+            \item \math{\lim_{n \to \infty} \frac{(2^{n+1} - 2)^2}{2^n} = \infty}, \math{g \in O(f)}
+            \item \math{\lim_{n \to \infty} \frac{(2^{n+1} - 2)^2}{2^{2n}} = 4}. The result is constant, so both \math{f \in O(g)} and \math{g \in O(f)}
+            \item \math{\lim_{n \to \infty} \frac{(2^{n+1} - 2)^2}{2^{3n}} = 0}, \math{f \in O(g)}
+            \item \math{\lim_{n \to \infty} \frac{(2^{n+1} - 2)^2}{2^{n^2}} = 0}, \math{f \in O(g)}
+            \item \math{\sum_{i=1}^n \sum_{j=1}^i 2^{i+j} = \sum_{i=1}^n 2^i (2^{i + 1} - 2) % = \frac{4}{3} ((-3) 2^n + 2^{2n + 1} + 1)} 
+            \approx 2^{2n+1}}\\ \math{\lim_{n \to \infty} \frac{(2^{n+1} - 1)^2}{2^{2n+1}} = 2}. The result is constant, so both \math{f \in O(g)} and \math{g \in O(f)}
+         \end{enumerate}
+    \item \math{\sum_{i=1}^n i\sqrt{i} \approx n^{\frac{5}{2}}}
+         \begin{enumerate}[i)]
+            \item \math{\lim_{n \to \infty} \frac{n^{\frac{5}{2}}}{n^2} = \infty}, \math{g \in O(f)}
+            \item \math{\lim_{n \to \infty} \frac{n^{\frac{5}{2}}}{n^2 \log_2 n} = \infty}, \math{g \in O(f)}
+            \item Since \math{-1 \leq sin \leq 1}, \math{n^{-3} \leq n^{3sin(n\pi/2)} \leq n^3}. As it is alternating, neither situation fit in.
+            \item \math{\lim_{n \to \infty} \frac{n^{\frac{5}{2}}}{4^{\log_2 n}} = \infty}, \math{g \in O(f)}
+            \item \math{\lim_{n \to \infty} \frac{n^{\frac{5}{2}}}{8^{\log_2 n}} = 0}, \math{f \in O(g)}
+         \end{enumerate}
+\end{enumerate}
+
+\section{Problem 9.44 (a)}
+
+\math{\sum_{i=1}^n \frac{i^2}{i^3+1}}, this function is decreasing over time.
+
+\begin{itemize}
+    \item Integration 
+         \begin{equation}
+            \begin{split}
+                \int \frac{i^2}{i^3+1} di &= \int \frac{1}{3}\frac{1}{a}da, a = i^3 +1 \\
+                &= \frac{1}{3}ln(a) \\
+                &= \frac{1}{3}ln(i^3+1)
+            \end{split}
+        \end{equation}
+    \item Upper Bond
+        \begin{equation}
+            \begin{split}
+                \frac{1}{3}ln(i^3+1) \vert_0^n &= \frac{1}{3}(ln(n^3 + 1) - 0) \\
+                &= \frac{1}{3}ln(n^3 + 1)
+            \end{split}
+        \end{equation}
+    \item Lower Bond
+         \begin{equation}
+            \begin{split}
+                \frac{1}{3}ln(i^3+1) \vert_1^{n+1} &= \frac{1}{3}(ln((n+1)^3 + 1) - ln(2)) \\
+                &= \frac{1}{3}ln({(n + 1)}^3+1) - \frac{1}{3}ln(2)
+            \end{split}
+        \end{equation}
+    \item Behavior
+        \begin{equation}
+            \begin{split}
+                \theta(\frac{1}{3}ln(i^3+1) \vert_0^n) = \theta(\frac{1}{3}ln(n^3 + 1)) \approx \theta(\frac{1}{3}ln(n^3)) = \theta(ln(n))
+            \end{split}
+        \end{equation}
+\end{itemize}
+
+\end{document}
